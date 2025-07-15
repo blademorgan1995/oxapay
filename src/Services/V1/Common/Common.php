@@ -15,7 +15,7 @@ class Common
         $baseUrl = config('oxapay.base_url');
         $url = "$baseUrl/v1/common/prices";
 
-        return $this->sendRequest(url: $url, action: 'get');
+        return $this->sendRequest($url, [], 'get', []);
     }
 
     public function currencies()
@@ -24,7 +24,7 @@ class Common
         $baseUrl = config('oxapay.base_url');
         $url = "$baseUrl/v1/common/currencies";
 
-        return $this->sendRequest(url: $url, action: 'get');
+        return $this->sendRequest($url, [], 'get', []);
     }
 
     public function fiats()
@@ -33,7 +33,7 @@ class Common
         $baseUrl = config('oxapay.base_url');
         $url = "$baseUrl/v1/common/fiats";
 
-        return $this->sendRequest(url: $url, action: 'get');
+        return $this->sendRequest($url, [], 'get', []);
     }
 
     public function networks()
@@ -42,7 +42,7 @@ class Common
         $baseUrl = config('oxapay.base_url');
         $url = "$baseUrl/v1/common/networks";
 
-        return $this->sendRequest(url: $url, action: 'get');
+        return $this->sendRequest($url, [], 'get', []);
     }
 
     public function systemStatus()
@@ -51,7 +51,7 @@ class Common
         $baseUrl = config('oxapay.base_url');
         $url = "$baseUrl/v1/common/monitor";
 
-        return $this->sendRequest(url: $url, action: 'get');
+        return $this->sendRequest($url, [], 'get', []);
     }
 
     public function balance($data = null, $general = null)
@@ -64,7 +64,7 @@ class Common
         $url = "$baseUrl/v1/general/account/balance";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, action: 'get', header: $header);
+        return $this->sendRequest($url, $data, 'get', $header);
     }
 
 }
