@@ -25,7 +25,7 @@ class Payment
         $mergedData = $mergedCallback;
 
         // request & response
-        return $this->sendRequest(url: $url, data: $mergedData, header: $header);
+        return $this->sendRequest($url, $mergedData, 'post', $header);
     }
 
     public function generateWhiteLabel($data, $merchant = null) {
@@ -41,7 +41,7 @@ class Payment
         $mergedData = $mergedCallback;
 
         // request & response
-        return $this->sendRequest(url: $url, data: $mergedData, header: $header);
+        return $this->sendRequest($url, $mergedData, 'post', $header);
     }
 
     public function generateStaticAddress($data, $merchant = null) {
@@ -57,7 +57,7 @@ class Payment
         $mergedData = $mergedCallback;
 
         // request & response
-        return $this->sendRequest(url: $url, data: $mergedData, header: $header);
+        return $this->sendRequest($url, $mergedData, 'post', $header);
     }
 
 
@@ -72,7 +72,7 @@ class Payment
         $url = "$baseUrl/v1/payment/$ident";
 
         // request & response
-        return $this->sendRequest(url: $url, action: 'get', header: $header);
+        return $this->sendRequest($url, [], 'get', $header);
     }
 
     public function history($data = null, $merchant = null)
@@ -85,7 +85,7 @@ class Payment
         $url = "$baseUrl/v1/payment/static-address";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, action: 'get', header: $header);
+        return $this->sendRequest($url, $data, 'get', $header);
     }
 
     public function acceptedCurrencies($merchant = null)
@@ -98,7 +98,7 @@ class Payment
         $url = "$baseUrl/v1/payment/accepted-currencies";
 
         // request & response
-        return $this->sendRequest(url: $url, action: 'get', header: $header);
+        return $this->sendRequest($url, [],'get', $header);
     }
 
 
@@ -113,7 +113,7 @@ class Payment
         $url = "$baseUrl/v1/payment/static-address/revoke";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, header: $header);
+        return $this->sendRequest($url, $data, 'post', $header);
     }
 
     public function staticAddressList($data = null, $merchant = null)
@@ -126,7 +126,7 @@ class Payment
         $url = "$baseUrl/v1/payment/static-address";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, action: 'get', header: $header);
+        return $this->sendRequest($url, $data, 'get', $header);
     }
 
 }
