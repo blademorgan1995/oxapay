@@ -24,7 +24,7 @@ class Payout
         $mergedData = $mergedCallback;
 
         // request & response
-        return $this->sendRequest(url: $url, data: $mergedData, header: $header);
+        return $this->sendRequest($url, $mergedData, 'post', $header);
     }
 
     public function information($ident, $payout = null)
@@ -37,7 +37,7 @@ class Payout
         $url = "$baseUrl/v1/payout/$ident";
 
         // request & response
-        return $this->sendRequest(url: $url, header: $header, action: 'get');
+        return $this->sendRequest($url, [], 'get', $header,);
     }
 
     public function history($data = null, $payout = null)
@@ -50,6 +50,6 @@ class Payout
         $url = "$baseUrl/v1/payout";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, header: $header, action: 'get');
+        return $this->sendRequest($url, $data, 'get', $header);
     }
 }
