@@ -391,19 +391,27 @@ If the input to the **validate()** function is empty, it uses the default paymen
 
 **ConnectionException :**
 Failed to establish a connection with the server.
+
 **InvalidApiKeyException :**
 The provided API key is invalid.
+
 **InvalidHmacSignatureException :**
 The provided HMAC signature does not match the expected value.
+
 **InvalidParamException :**
 One or more input parameters are invalid or missing.
+
 **InvalidRequestException :**
 The overall structure of the request is incorrect.
+
 **InvalidWebhookTypeException :**
 The provided webhook type is invalid.
+
 **NotFoundException :**
 The requested resource was not found (404).
+
 **ServerErrorException :**
 Internal server error (500).
+
 **ServiceUnavailableException :**
 The service is currently unavailable.
