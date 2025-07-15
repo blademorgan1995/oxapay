@@ -54,31 +54,31 @@ Some functions require a API-key. If a API-key is not passed to the function, it
 	}
 
 ### Functions & Exceptions
- - [Generate Invoice](#generate-invoice)
- - [Generate White Label](#generate-white-label)
- - [Generate Static Address](#generate-static-address)
- - [Revoking Static Address](#revoking-static-address)
- - [Static Address List](#static-address-list)
- - [Payment Information](#payment-information)
- - [Payment History](#payment-history)
- - [Accepted Currencies](#accepted-currencies)
- - [Generate Payout](#generate-payout)
- - [Payout Information](#payout-information)
- - [Payout History](#payout-history)
- - [Swap Request](#swap-request)
- - [Swap History](#swap-history)
- - [Swap Pairs](#swap-pairs)
- - [Swap Calculate](#swap-calculate)
- - [Swap Rate](#swap-rate)
- - [Account Balance](#account-balance)
- - [Prices](#prices)
- - [Supported Currencies](#supported-currencies)
- - [Supported Fiat Currencies](#supported-fiat-currencies)
- - [Supported Networks](#supported-networks)
- - [System Status](#system-status)
- - [Webhook](#webhook)
- - [Exceptions](#exceptions)
-
+- [Generate Invoice](#generate-invoice)
+- [Generate White Label](#generate-white-label)
+- [Generate Static Address](#generate-static-address)
+- [Revoking Static Address](#revoking-static-address)
+- [Static Address List](#static-address-list)
+- [Payment Information](#payment-information)
+- [Payment History](#payment-history)
+- [Accepted Currencies](#accepted-currencies)
+- [Generate Payout](#generate-payout)
+- [Payout Information](#payout-information)
+- [Payout History](#payout-history)
+- [Swap Request](#swap-request)
+- [Swap History](#swap-history)
+- [Swap Pairs](#swap-pairs)
+- [Swap Calculate](#swap-calculate)
+- [Swap Rate](#swap-rate)
+- [Account Balance](#account-balance)
+- [Prices](#prices)
+- [Supported Currencies](#supported-currencies)
+- [Supported Fiat Currencies](#supported-fiat-currencies)
+- [Supported Networks](#supported-networks)
+- [System Status](#system-status)
+- [Webhook](#webhook)
+- [Exceptions](#exceptions)
+- [Tests](#tests)
 
 
 ### Generate Invoice
@@ -134,7 +134,7 @@ This endpoint allows you to generate white-labeled payment solutions. **[more in
 ### Generate Static Address
 This endpoint allows you to generate a static address for a specific currency and network. The static address will be linked to a unique track_id, and if a callback_url is provided, your server will receive notifications for any payments made to the address. [more info](https://docs.oxapay.com/api-reference/payment/generate-static-address)
 
-    
+
     $data = [  
 	    "network" => "eth",  //required
 	    "callback_url" => "https://www.your-website.com/oxapay/webhook",  
@@ -391,27 +391,24 @@ If the input to the **validate()** function is empty, it uses the default paymen
 
 **ConnectionException :**
 Failed to establish a connection with the server.
-
 **InvalidApiKeyException :**
 The provided API key is invalid.
-
 **InvalidHmacSignatureException :**
 The provided HMAC signature does not match the expected value.
-
 **InvalidParamException :**
 One or more input parameters are invalid or missing.
-
 **InvalidRequestException :**
 The overall structure of the request is incorrect.
-
 **InvalidWebhookTypeException :**
 The provided webhook type is invalid.
-
 **NotFoundException :**
 The requested resource was not found (404).
-
 **ServerErrorException :**
 Internal server error (500).
-
 **ServiceUnavailableException :**
 The service is currently unavailable.
+
+### Tests
+To test the methods, you can use the following command. The important thing is that before testing, you must fill in the API-key values in the  `config/oxapay.php` path.
+
+    php artisan test vendor/oxapay/oxapay/tests/Feature
