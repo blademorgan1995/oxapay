@@ -1,0 +1,17 @@
+{
+    "name": "oxapay/oxapay",
+    "description": "OxaPay provides a robust and secure platform for processing cryptocurrency payments.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Oxapay\\Oxapay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "OxaPay",
+            "email": "info@oxapay.com"
+        }
+    ],
+    "require": {}
+}
