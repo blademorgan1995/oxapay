@@ -46,9 +46,9 @@ Some functions require a API-key. If a API-key is not passed to the function, it
     try {
 	    $data = [...];
 	    $apiKey = config('oxapay.merchants.key_2');
-	    $result = OxaPay::generateInvoice($data);
+     	    $result = OxaPay::generateInvoice($data, $apiKey);
 		OR:
-	    $result = OxaPay::generateInvoice($data, $apiKey);
+     	    $result = OxaPay::generateInvoice($data);
 	} catch (Exception $e) {  
 		return response()->json(['error' => $e->getMessage()], $e->getCode());  
 	}
