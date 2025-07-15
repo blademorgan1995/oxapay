@@ -14,8 +14,13 @@ class CommonTest extends TestCase
             $response = OxaPay::common()->prices();
             $responseData = $response->getData(true);
 
+            $assertTrue = false;
+            if ($responseData['status'] === 200) {
+                $assertTrue = true;
+            }
+
             // check status
-            $this->assertTrue($responseData['status'] === 200 ? true : false);
+            $this->assertTrue($assertTrue);
         } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
@@ -28,8 +33,13 @@ class CommonTest extends TestCase
             $response = OxaPay::common()->currencies();
             $responseData = $response->getData(true);
 
+            $assertTrue = false;
+            if ($responseData['status'] === 200) {
+                $assertTrue = true;
+            }
+            
             // check status
-            $this->assertTrue($responseData['status'] === 200 ? true : false);
+            $this->assertTrue($assertTrue);
         } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
