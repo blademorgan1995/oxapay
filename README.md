@@ -53,7 +53,7 @@ Some functions require a API-key. If a API-key is not passed to the function, it
 		return response()->json(['error' => $e->getMessage()], $e->getCode());  
 	}
 
-### Functions & Exceptions
+### Functions, Exceptions, Tests
 - [Generate Invoice](#generate-invoice)
 - [Generate White Label](#generate-white-label)
 - [Generate Static Address](#generate-static-address)
