@@ -382,7 +382,8 @@ If the input to the **validate()** function is empty, it uses the default paymen
 
 **validate() :**
 
-    $response = OxaPay::webhook()->getData();
+    $apiKey = config('oxapay.merchants.key_2'); //merchants or payouts or null
+    $response = OxaPay::webhook()->validate($apiKey);
 **response (200) :**
 
     {"data":{"track_id":"120916648","status":"Paid","type":"invoice","module_name":"Test-Package-1","amount":12,"value":3.3192,"currency":"TRX","order_id":"your-order-id","email":"your-email@example.com","note":null,"fee_paid_by_payer":0,"under_paid_coverage":0,"description":"your description","date":1749716800,"txs":[{"status":"confirmed","tx_hash":"sandbox","sent_amount":3.079e-5,"received_amount":3.079e-5,"value":3.3194086279,"currency":"BTC","network":"Bitcoin Network","sender_address":null,"address":"sandbox","rate":1,"confirmations":10,"auto_convert_amount":0,"auto_convert_currency":"USDT","date":1749717025}]}}
@@ -419,3 +420,4 @@ The service is currently unavailable.
 To test the methods, you can use the following command. The important thing is that before testing, you must fill in the API-key values in the  `config/oxapay.php` path.
 
     php artisan test vendor/oxapay/oxapay/tests/Feature
+
