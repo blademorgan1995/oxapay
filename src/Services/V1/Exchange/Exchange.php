@@ -19,7 +19,7 @@ class Exchange
         $url = "$baseUrl/v1/general/swap";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, header: $header);
+        return $this->sendRequest($url, $data, 'post', $header);
     }
     public function rate($data, $general = null)
     {
@@ -31,7 +31,7 @@ class Exchange
         $url = "$baseUrl/v1/general/swap/rate";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, header: $header);
+        return $this->sendRequest($url, $data, 'post', $header);
     }
     public function calculate($data, $general = null)
     {
@@ -43,7 +43,7 @@ class Exchange
         $url = "$baseUrl/v1/general/swap/calculate";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, header: $header);
+        return $this->sendRequest($url, $data, 'post', $header);
     }
 
     public function pairs($general = null)
@@ -56,7 +56,7 @@ class Exchange
         $url = "$baseUrl/v1/general/swap/pairs";
 
         // request & response
-        return $this->sendRequest(url: $url, action: 'get', header: $header);
+        return $this->sendRequest($url, [], 'get', $header);
     }
     public function history($data = null, $general = null)
     {
@@ -68,6 +68,6 @@ class Exchange
         $url = "$baseUrl/v1/general/swap";
 
         // request & response
-        return $this->sendRequest(url: $url, data: $data, action: 'get', header: $header);
+        return $this->sendRequest($url, $data, 'get', $header);
     }
 }
