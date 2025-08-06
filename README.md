@@ -103,7 +103,7 @@ This endpoint enables you to generate a new invoice and obtain a payment URL for
 	];
 	
 	$apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::generateInvoice($data, $apiKey);
+	$response = OxaPay::payment()->generateInvoice($data, $apiKey);
 
 
 ### Generate White Label
@@ -128,7 +128,7 @@ This endpoint allows you to generate white-labeled payment solutions. **[more in
 	];
 	
 	$apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::generateInvoice($data, $apiKey);
+	$response = OxaPay::payment()->generateInvoice($data, $apiKey);
 
 
 ### Generate Static Address
@@ -146,7 +146,7 @@ This endpoint allows you to generate a static address for a specific currency an
 	];  
 	
 	$apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::generateStaticAddress($data, $apiKey);  
+	$response = OxaPay::payment()->generateStaticAddress($data, $apiKey);  
 
 
 ### Revoking Static Address
@@ -157,7 +157,7 @@ You can revoke a static wallet by providing the merchant API key and the address
 	];  
 	
 	$apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::revokeStaticAddress($data, $apiKey);  
+	$response = OxaPay::payment()->revokeStaticAddress($data, $apiKey);  
 
 
 ### Static Address List
@@ -177,7 +177,7 @@ Use this endpoint to retrieve a list of static addresses associated with a speci
 	];  
 	
 	$apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::staticAddressList($data, $apiKey);
+	$response = OxaPay::payment()->staticAddressList($data, $apiKey);
 
 
 ### Payment Information
@@ -185,7 +185,7 @@ Utilize the Payment Information endpoint to retrieve detailed information about 
 
     $paymentIdent = 199078636;  //required
     $apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::paymentInformation($paymentIdent, $apiKey);
+	$response = OxaPay::payment()->information($paymentIdent, $apiKey);
 
 
 ### Payment History
@@ -210,14 +210,14 @@ Use this endpoint to retrieve a list of payments associated with your account, d
 	];  
 	
 	$apiKey = config('oxapay.merchants.key_2');
-	$response = OxaPay::paymentHistory($data, $apiKey);
+	$response = OxaPay::payment()->history($data, $apiKey);
 
 
 ### Accepted Currencies
 The endpoint retrieves the list of cryptocurrencies available for payment processing through OxaPay. [more info](https://docs.oxapay.com/api-reference/payment/accepted-currencies)
 
     $apiKey = config('oxapay.merchants.key_2');
-    $response = OxaPay::acceptedCurrencies($apiKey);
+    $response = OxaPay::payment()->currencies($apiKey);
 
 ### Generate Payout
 This endpoint enables you to generate a cryptocurrency payout request, allowing you to transfer funds to a specified address. [more info](https://docs.oxapay.com/api-reference/payout/generate-payout)
