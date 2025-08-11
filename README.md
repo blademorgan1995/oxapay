@@ -48,7 +48,7 @@ Some functions require a API-key. If a API-key is not passed to the function, it
 	    $apiKey = config('oxapay.merchants.key_2');
 	    $result = OxaPay::generateInvoice($data, $apiKey);
 		OR:
-	    $result = OxaPay::generateInvoice($data);
+	    $result = OxaPay::payment()->generateInvoice($data);
 	} catch (Exception $e) {  
 		return response()->json(['error' => $e->getMessage()], $e->getCode());  
 	}
@@ -217,7 +217,7 @@ Use this endpoint to retrieve a list of payments associated with your account, d
 The endpoint retrieves the list of cryptocurrencies available for payment processing through OxaPay. [more info](https://docs.oxapay.com/api-reference/payment/accepted-currencies)
 
     $apiKey = config('oxapay.merchants.key_2');
-    $response = OxaPay::payment()->currencies($apiKey);
+    $response = OxaPay::payment()->acceptedCurrencies($apiKey);
 
 ### Generate Payout
 This endpoint enables you to generate a cryptocurrency payout request, allowing you to transfer funds to a specified address. [more info](https://docs.oxapay.com/api-reference/payout/generate-payout)
@@ -233,14 +233,14 @@ This endpoint enables you to generate a cryptocurrency payout request, allowing 
 	];  
 	
 	$apiKey = config('oxapay.payouts.key_2');
-	$response = OxaPay::generatePayout($data, $apiKey);
+	$response = OxaPay::payout()->generate($data, $apiKey);
 
 ### Payout Information
 This endpoint retrieves the details of a specific payout using its `track_id`. [more info](https://docs.oxapay.com/api-reference/payout/payout-information)
 
     $ident = 258298386;  //required
     $apiKey = config('oxapay.payouts.key_2');
-	$response = OxaPay::payoutInformation($ident, $apiKey);
+	$response = OxaPay::payout()->information($ident, $apiKey);
 
 ### Payout History
 This endpoint retrieves a list of payout transactions associated with your account, based on your Payout API Key. [more info](https://docs.oxapay.com/api-reference/payout/payout-history)
@@ -261,7 +261,7 @@ This endpoint retrieves a list of payout transactions associated with your accou
 	];  
 	
 	$apiKey = config('oxapay.payouts.key_2');
-	$response = OxaPay::payoutHistory($data, $apiKey);
+	$response = OxaPay::payout()->history($data, $apiKey);
 
 ### Swap Request
 This endpoint allows you to swap your account assets. [more info](https://docs.oxapay.com/api-reference/swap/swap-request)
@@ -273,7 +273,7 @@ This endpoint allows you to swap your account assets. [more info](https://docs.o
 	];  
 	
 	$apiKey = config('oxapay.general.key_2');
-	$response = OxaPay::swapRequest($data, $apiKey);
+	$response = OxaPay::exchange()->request($data, $apiKey);
 
 ### Swap History
 This endpoint allows you to retrieve a list of swap transactions based on your General API Key. [more info](https://docs.oxapay.com/api-reference/swap/swap-history)
@@ -292,13 +292,13 @@ This endpoint allows you to retrieve a list of swap transactions based on your G
 	];  
 	
 	$apiKey = config('oxapay.general.key_2');
-	$response = OxaPay::swapHistory($data, $apiKey);
+	$response = OxaPay::exchange()->history($data, $apiKey);
 
 ### Swap Pairs
 This endpoint allows you to access a list of swappable cryptocurrencies along with their minimum swap amounts. [more info](https://docs.oxapay.com/api-reference/swap/swap-pairs)
 
     $apiKey = config('oxapay.general.key_2');
-    $response = OxaPay::swapPairs($apiKey);
+    $response = OxaPay::exchange()->pairs($apiKey);
 
 ### Swap Calculate
 This endpoint allows you to instantly calculate how much cryptocurrency you'll receive when swapping one currency for another. [more info](https://docs.oxapay.com/api-reference/swap/swap-calculate)
@@ -310,7 +310,7 @@ This endpoint allows you to instantly calculate how much cryptocurrency you'll r
 	];  
 	
 	$apiKey = config('oxapay.general.key_2');
-	$response = OxaPay::swapCalculate($data, $apiKey);
+	$response = OxaPay::exchange()->calculate($data, $apiKey);
 
 ### Swap Rate
 This endpoint allows you to fetch real-time swap rates for cryptocurrency pairs supported by OxaPay. [more info](https://docs.oxapay.com/api-reference/swap/swap-rate)
@@ -321,7 +321,7 @@ This endpoint allows you to fetch real-time swap rates for cryptocurrency pairs 
 	];  
 	
 	$apiKey = config('oxapay.general.key_2');
-	$response = OxaPay::swapRate($data, $apiKey);
+	$response = OxaPay::exchange()->rate($data, $apiKey);
 
 ### Account Balance
 This endpoint allows you to retrieve the details of all wallets associated with a user, including a list of currencies and their corresponding amounts. [more info](https://docs.oxapay.com/api-reference/common/account-balance)
@@ -331,33 +331,33 @@ This endpoint allows you to retrieve the details of all wallets associated with 
 	];  
 	
 	$apiKey = config('oxapay.general.key_2');
-	$response = OxaPay::accountBalance($data, $apiKey);
+	$response = OxaPay::common()->balance($data, $apiKey);
 
 ### Prices
 This endpoint allows you to retrieve the current prices of all cryptocurrencies supported by OxaPay. [more info](https://docs.oxapay.com/api-reference/common/prices)
 
-    $response = OxaPay::prices();
+    $response = OxaPay::common()->prices();
 
 ### Supported Currencies
 This endpoint allows you to access a comprehensive list of supported cryptocurrencies, including their network details, symbol, name, and withdrawal information, enabling you to identify the appropriate network for each currency. [more info](https://docs.oxapay.com/api-reference/common/supported-currencies)
 
-    $response = OxaPay::currencies();
+    $response = OxaPay::common()->currencies();
 
 
 ### Supported Fiat Currencies
 This endpoint allows you to retrieve a list of supported fiat currencies, with details including currency code (e.g., USD, AUD), symbol, name, price, and display precision. [more info](https://docs.oxapay.com/api-reference/common/supported-fiat-currencies)
 
-    $response = OxaPay::fiats();
+    $response = OxaPay::common()->fiats();
 
 ### Supported Networks
 This endpoint allows you to retrieve a list of blockchain networks supported by OxaPay for cryptocurrency transactions. [more info](https://docs.oxapay.com/api-reference/common/supported-networks)
 
-    $response = OxaPay::networks();
+    $response = OxaPay::common()->networks();
 
 ### System Status
 This endpoint allows you to check the current status of the OxaPay API, ensuring it is functioning correctly. [more info](https://docs.oxapay.com/api-reference/common/system-status)
 
-    $response = OxaPay::systemStatus();
+    $response = OxaPay::common()->systemStatus();
 
 ### Webhook
 Merchants can set up a callback_url in their merchant requests, and upon processing payments, OxaPay will send you notifications in JSON format.
